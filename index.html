@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe - Sparkle Edition ✨</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- PeerJS for Online Multiplayer -->
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Tic Tac Toe ✨</h1>
+            <p id="gameModeText">Select Game Mode</p>
+        </header>
+
+        <!-- Menu Screen -->
+        <div id="menu" class="menu-screen">
+            <button class="menu-btn" onclick="startGame('computer')">🤖 Play vs Computer</button>
+            <button class="menu-btn" onclick="startGame('local')">👯‍♀️ Two Player (Local)</button>
+            <button class="menu-btn" onclick="startGame('online')">🌍 Play Online</button>
+        </div>
+
+        <!-- Online Lobby Screen -->
+        <div id="onlineLobby" class="hidden">
+            <p>Share this link with your friend:</p>
+            <div class="link-container">
+                <input type="text" id="gameLinkInput" readonly>
+                <button class="copy-btn" id="copyBtn">Copy 📋</button>
+            </div>
+            <p class="status-waiting">Waiting for opponent... 🕒</p>
+            <button class="back-btn" onclick="showMenu()">Back to Menu</button>
+        </div>
+
+        <!-- Game Board Screen (Hidden by default) -->
+        <div id="gameScreen" class="hidden">
+            <div class="game-board" id="board">
+                <div class="cell" data-index="0"></div>
+                <div class="cell" data-index="1"></div>
+                <div class="cell" data-index="2"></div>
+                <div class="cell" data-index="3"></div>
+                <div class="cell" data-index="4"></div>
+                <div class="cell" data-index="5"></div>
+                <div class="cell" data-index="6"></div>
+                <div class="cell" data-index="7"></div>
+                <div class="cell" data-index="8"></div>
+            </div>
+
+            <div class="status-message" id="status">Your Turn! 💖</div>
+
+            <div class="controls">
+                <button class="reset-btn" id="resetBtn">Restart Game 🌸</button>
+                <button class="back-btn" onclick="showMenu()">Menu 🏠</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Game Over -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <h2 id="modalTitle"></h2>
+            <p id="modalMessage"></p>
+            <div class="emoji-container" id="modalEmoji"></div>
+            <button class="play-again-btn" id="playAgainBtn">Play Again 🎀</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
